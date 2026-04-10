@@ -13,8 +13,8 @@ Frontend: HTML5, CSS3, Bootstrap
 Follow these steps to set up the project locally on your machine.
 1. Clone the Repository
 git clone https://github.com/Gouthamvaishnav11/codealpha-Restaurant-Management-System
-cd Restaurant-Management-System
-2. Set Up Virtual Environment
+2.cd Restaurant-Management-System
+3. Set Up Virtual Environment
 Creating a virtual environment keeps your project dependencies isolated.
 # Create the environment
 python -m venv venv
