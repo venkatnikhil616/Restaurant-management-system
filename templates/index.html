@@ -1,0 +1,54 @@
+{% extends "parent.html" %}
+
+{% block title %}
+
+<title>Home</title>
+
+{% endblock %}
+
+{% block main %}
+<main>
+<div class="text-center">
+    <h2 class="my-4">Welcome to the Restaurant Management System</h2>
+    <p>Select an option below to manage different aspects of the restaurant.</p>
+    <div class="row">
+        <div class="col-md-3 my-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Order Management</h5>
+                    <p class="card-text">Place and manage customer orders.</p>
+                    <a href="{{ url_for('order') }}" class="btn btn-primary">Go to Orders</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 my-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Reservations</h5>
+                    <p class="card-text">Manage table reservations.</p>
+                    <a href="{{ url_for('reservation') }}" class="btn btn-primary">Go to Reservations</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 my-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Inventory</h5>
+                    <p class="card-text">Track inventory items.</p>
+                    <a href="{{ url_for('inventory') }}" class="btn btn-primary">Go to Inventory</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 my-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Reports</h5>
+                    <p class="card-text">View system reports.</p>
+                    <a href="{{ url_for('report') }}" class="btn btn-primary">Go to Reports</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+{% endblock %}
