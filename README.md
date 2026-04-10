@@ -11,9 +11,11 @@ Database: SQLite, SQLAlchemy (ORM)
 Frontend: HTML5, CSS3, Bootstrap
 💻 Getting Started
 Follow these steps to set up the project locally on your machine.
-1. Clone the Repository
-git clone https://github.com/Gouthamvaishnav11/codealpha-Restaurant-Management-System
+1.Clone the Repository
+git clone https://github.com/venkatnikhil616/Restaurant-management-system.git
+
 2.cd Restaurant-Management-System
+
 3. Set Up Virtual Environment
 Creating a virtual environment keeps your project dependencies isolated.
 # Create the environment
@@ -26,9 +28,11 @@ venv\Scripts\activate
 source venv/bin/activate
 3. Install Dependencies
 pip install -r requirements.txt --break-system-packages
+
 4. Run the Application
 python app.py
 Once the server is running, open your browser and navigate to: http://127.0.0.1:5000
+
 📊 Database Management
 The system uses SQLite for data storage. To inspect the database contents:
 Locate the .db file (usually in the instance/ folder).
