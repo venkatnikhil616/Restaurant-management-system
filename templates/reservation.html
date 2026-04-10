@@ -1,0 +1,36 @@
+{% extends "parent.html" %}
+
+{% block title %}
+
+<title>Make a Reservation</title>
+
+{% endblock %}
+
+{% block main %}
+<main>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="text-center my-4">Make a Reservation</h2>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="table_number" class="form-label">Table Number:</label>
+                <select class="form-select" id="table_number" name="table_number" required>
+                    {% for table in tables %}
+                    <option value="{{ table.number }}">{{ table.number }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="customer_name" class="form-label">Customer Name:</label>
+                <input type="text" class="form-control" id="customer_name" name="customer_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="reservation_time" class="form-label">Reservation Time:</label>
+                <input type="datetime-local" class="form-control" id="reservation_time" name="reservation_time" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Make Reservation</button>
+        </form>
+    </div>
+</div>
+</main>
+{% endblock %}
