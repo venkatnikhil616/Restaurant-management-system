@@ -1,0 +1,40 @@
+{% extends "parent.html" %}
+
+{% block title %}
+<title>Inventory Management</title>
+{% endblock %}
+
+{% block main %}
+<main>
+<div class="row">
+    <div class="col-md-6">
+        <h2 class="text-center my-4">Add Inventory Item</h2>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Item Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity:</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" required>
+            </div>
+            <div class="mb-3">
+                <label for="unit" class="form-label">Unit:</label>
+                <input type="text" class="form-control" id="unit" name="unit" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Add Item</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h2 class="text-center my-4">Inventory List</h2>
+        <ul class="list-group">
+            {% for item in items %}
+            <li class="list-group-item">
+                {{ item.name }} - {{ item.quantity }} {{ item.unit }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</main>
+{% endblock %}
