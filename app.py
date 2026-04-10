@@ -59,11 +59,35 @@ class Reservation(db.Model):
     customer_name = db.Column(db.String(150), nullable=False)
     reservation_time = db.Column(db.DateTime, nullable=False)
 
+class ContactMessage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+    date_sent = db.Column(db.DateTime, default=datetime.utcnow)
+
 # --- Routes ---
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        # Simple authentication check against database
+        user = User.query.filter_by(username=username).first()
+
+        if user and user.password == password:
+            flash(f'Welcome, {username}!', 'success')
+            return redirect(url_for('index'))
+        else:
+            flash('Invalid username or password.', 'danger')
+
+    return render_template('login.html')
 
 @app.route('/order', methods=['GET', 'POST'])
 def order():
@@ -77,7 +101,7 @@ def order():
 
         if table and menu_item:
             total = menu_item.price * int(quantity)
-            # Assuming user_id=1 for simplicity
+            # user_id defaults to 1 for this demo
             new_order = Order(user_id=1, table_id=table.id, total=total)
             db.session.add(new_order)
             db.session.commit()
@@ -141,8 +165,15 @@ def report():
     reservations = Reservation.query.all()
     return render_template('report.html', orders=orders, reservations=reservations)
 
+# --- App Execution ---
+
 if __name__ == '__main__':
-    # You might need to create the database tables first:
-    # with app.app_context():
-    #     db.create_all()
+    with app.app_context():
+        db.create_all()
+        # Create a test admin user if none exists
+        if not User.query.filter_by(username='admin').first():
+            admin = User(username='admin', email='admin@restaurant.com', password='password123', is_admin=True)
+            db.session.add(admin)
+            db.session.commit()
+
     app.run(debug=True)
